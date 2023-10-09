@@ -33,9 +33,9 @@ class ItemViewSet(viewsets.ModelViewSet):
     
     def put(self, request, *args, **kwargs):
         request_data = request.data.copy()
-        content_obj = self.queryset.filter(id=request_data.get('id','')).first()
+        item_obj = self.queryset.filter(id=request_data.get('id','')).first()
         request_data['updated_at'] = datetime.now()
-        serializer_obj = self.serializer_class(content_obj,data=request_data)
+        serializer_obj = self.serializer_class(item_obj,data=request_data)
         if serializer_obj.is_valid():       
             serializer_obj.save()
             return Response(status=200,data={'status':'SUCCESS','data':serializer_obj.data})
@@ -44,6 +44,6 @@ class ItemViewSet(viewsets.ModelViewSet):
     
     def delete(self, request, *args, **kwargs):
         request_data = request.data
-        content_obj = self.queryset.filter(id=request_data.get('id','')).first()
-        content_obj.delete()
+        item_obj = self.queryset.filter(id=request_data.get('id','')).first()
+        item_obj.delete()
         return Response(status=200,data={'status':'SUCCESS','data':'item sucessfully deleted'})
