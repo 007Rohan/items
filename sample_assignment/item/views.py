@@ -46,4 +46,4 @@ class ItemViewSet(viewsets.ModelViewSet):
         request_data = request.data
         content_obj = self.queryset.filter(id=request_data.get('id','')).first()
         content_obj.delete()
-        return Response(status=200,data={'status':'SUCCESS','data':'content sucessfully deleted'})
+        return Response(status=200,data={'status':'SUCCESS','data':'item sucessfully deleted'})
