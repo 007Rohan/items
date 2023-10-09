@@ -1,4 +1,4 @@
-# Content-Management-System
+# Sample Assignment
 
 
 ### How to setup locally
